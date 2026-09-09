@@ -5,11 +5,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,7 +17,9 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - name: 'Hello World'
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+      - name: "Hello World"
         run: echo "Hello World"
       - name: Muestra el contenido del directorio
         run: ls -la

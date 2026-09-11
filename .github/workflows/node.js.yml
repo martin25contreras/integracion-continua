@@ -17,13 +17,14 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - name: Checkout
+      - name: Checkout # Para traernos la información del repositorio
         uses: actions/checkout@v7.0.1
-      - name: Setup Node.js environment
+      - name: Setup Node.js environment # Para instalar la versión de node que necesitamos
         uses: actions/setup-node@v7.0.0
-        with:
+        with: # indicar que version de node queremos instalar y que cache queremos usar
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci --legacy-peer-deps --no-fund --no-audit
-      - run: npm run lint
-      - run: npm run build
+      - run: npm ci --legacy-peer-deps --no-fund --no-audit # instalar dependencias de node
+      - run: npm run lint #correr el linter para ver si hay errores de sintaxis
+      - run: npm test # correr los tests del proyecto
+      - run: npm run build # compilar el proyecto

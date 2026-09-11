@@ -4,7 +4,9 @@
 name: Node.js CI
 
 on:
-  push:
+  push: # indica que se ejecutara el workflow cuando se haga un push a las ramas main o develop
+    branches: ["main", "develop"]
+  pull_request: # indica que se ejecutara el workflow cuando se haga un pull request a las ramas main o develop
     branches: ["main"]
 
 jobs:

@@ -9,6 +9,10 @@ on:
   pull_request: # indica que se ejecutara el workflow cuando se haga un pull request a las ramas main o develop
     branches: ["main"]
 
+concurrency:
+  group: ci-${{ github.ref }} # indica que se ejecutara el workflow en un grupo de concurrencia
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
